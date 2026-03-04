@@ -38,7 +38,7 @@ const logContentView = () => {
 const logAddToCart = () => {
   appsFlyer.logEvent(
     'af_add_to_cart',
-    { af_content_id: 'product_A1', af_quantity: 1 },
+    { af_content_id: 'product_A1', af_price: 99.99, af_quantity: 1 },
     () => { Alert.alert('Event Sent', 'Add to Cart registered.'); },
     (error) => { console.error(error); }
   );
@@ -51,6 +51,7 @@ const logPurchaseWithRevenue = () => {
       af_revenue: '99.99',
       af_currency: 'MXN',
       af_content_id: 'product_A1',
+      af_order_id: 'order_001',
     },
     () => { Alert.alert('Event Sent', 'Purchase with Revenue registered!'); },
     (error) => { console.error(error); }
