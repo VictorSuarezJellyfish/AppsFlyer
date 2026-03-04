@@ -68,6 +68,9 @@
     <key>NSLocationWhenInUseUsageDescription</key>
     <string></string>
 
+    <key>NSUserTrackingUsageDescription</key>
+    <string>This app uses tracking to measure advertising performance and improve your experience.</string>
+
     <key>RCTNewArchEnabled</key>
     <true/>
 

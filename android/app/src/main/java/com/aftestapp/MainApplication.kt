@@ -1,4 +1,4 @@
-package com.aftestapp
+package com.af.aftestapp
 
 import android.app.Application
 import com.facebook.react.PackageList

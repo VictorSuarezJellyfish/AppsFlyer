@@ -20,6 +20,7 @@ import {
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
 import appsFlyer from 'react-native-appsflyer';
+import { requestTrackingPermission } from 'react-native-tracking-transparency';
 
 const AF_DEV_KEY = 'UHovGDPawJQHgjUo5rFNNZ';
 const AF_APP_ID = '111243210'; // iOS App ID sin el prefijo "id"
@@ -64,7 +65,14 @@ function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
   useEffect(() => {
-    // 1. INITIALIZE SDK (must be first)
+    // 1. REQUEST ATT PERMISSION (iOS only) — must be before SDK init
+    if (Platform.OS === 'ios') {
+      requestTrackingPermission().then((status) => {
+        console.log('ATT status:', status);
+      });
+    }
+
+    // 2. INITIALIZE SDK
     appsFlyer.initSdk(
       {
         devKey: AF_DEV_KEY,
