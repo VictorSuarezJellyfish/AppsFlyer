@@ -102,6 +102,7 @@ const logAddToCart = (product: Product) => {
     'af_add_to_cart',
     {
       af_content_id: product.id,
+      af_content_type: product.category,
       af_price: product.price,
       af_currency: product.currency,
       af_quantity: 1,
@@ -112,13 +113,14 @@ const logAddToCart = (product: Product) => {
 };
 
 const logPurchase = (cart: Product[]) => {
-  const total = cart.reduce((sum, p) => sum + p.price, 0);
+  const total = parseFloat(cart.reduce((sum, p) => sum + p.price, 0).toFixed(2));
   appsFlyer.logEvent(
     'af_purchase',
     {
-      af_revenue: String(total.toFixed(2)),
+      af_revenue: total,
       af_currency: cart[0]?.currency || 'USD',
       af_content_id: cart.map(p => p.id).join(','),
+      af_content_type: cart.map(p => p.category).join(','),
       af_order_id: `order_${Date.now()}`,
       af_quantity: cart.length,
     },
@@ -304,7 +306,7 @@ function App() {
     appsFlyer.initSdk(
       {
         devKey: AF_DEV_KEY,
-        isDebug: true,
+        isDebug: false,
         appId: AF_APP_ID,
         onInstallConversionDataListener: true,
         onDeepLinkListener: true,
