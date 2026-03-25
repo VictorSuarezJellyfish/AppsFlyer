@@ -3,6 +3,7 @@ import React
 import React_RCTAppDelegate
 import ReactAppDependencyProvider
 import AppsFlyerLib
+import AdSupport
 
 @main
 class AppDelegate: RCTAppDelegate {
@@ -13,6 +14,8 @@ class AppDelegate: RCTAppDelegate {
   ) -> Bool {
     self.moduleName = "AFTestApp"
     self.dependencyProvider = RCTAppDependencyProvider()
+    print("IDFV: \(UIDevice.current.identifierForVendor?.uuidString ?? "nil")")
+    print("IDFA: \(ASIdentifierManager.shared().advertisingIdentifier.uuidString)")
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 

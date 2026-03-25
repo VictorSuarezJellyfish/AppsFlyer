@@ -20,7 +20,7 @@ import { requestTrackingPermission } from 'react-native-tracking-transparency';
 // ─── CONSTANTS ──────────────────────────────────────────────────────────────
 
 const AF_DEV_KEY = 'UHovGDPawJQHgjUo5rFNNZ';
-const AF_APP_ID = '111243210';
+const AF_APP_ID = '6761079306';
 
 const AF_BLUE = '#4F35C8';
 const BANNER_COLOR = '#3D2DB5';
@@ -299,6 +299,9 @@ function App() {
     if (Platform.OS === 'ios') {
       requestTrackingPermission().then(status => {
         console.log('ATT status:', status);
+        appsFlyer.getAppsFlyerUID((_err, uid) => {
+          console.log('AppsFlyer UID (use as test device ID):', uid);
+        });
       });
     }
 
