@@ -299,9 +299,6 @@ function App() {
     if (Platform.OS === 'ios') {
       requestTrackingPermission().then(status => {
         console.log('ATT status:', status);
-        appsFlyer.getAppsFlyerUID((_err, uid) => {
-          console.log('AppsFlyer UID (use as test device ID):', uid);
-        });
       });
     }
 
@@ -309,7 +306,7 @@ function App() {
     appsFlyer.initSdk(
       {
         devKey: AF_DEV_KEY,
-        isDebug: true,
+        isDebug: false,
         appId: AF_APP_ID,
         onInstallConversionDataListener: true,
         onDeepLinkListener: true,
@@ -327,7 +324,7 @@ function App() {
         const sub1 = res?.data?.deep_link_sub1;
         Alert.alert(
           'Deep Link (OneLink)',
-          `deep_link_value: ${dlv || 'N/A'}\nsub1: ${sub1 || 'N/A'}\n\nRAW: ${JSON.stringify(res.data, null, 2)}`,
+          `deep_link_value: ${dlv || 'N/A'}\nsub1: ${sub1 || 'N/A'}`,
         );
       }
     });
