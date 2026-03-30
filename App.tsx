@@ -309,7 +309,7 @@ function App() {
     appsFlyer.initSdk(
       {
         devKey: AF_DEV_KEY,
-        isDebug: false,
+        isDebug: true,
         appId: AF_APP_ID,
         onInstallConversionDataListener: true,
         onDeepLinkListener: true,
@@ -327,7 +327,7 @@ function App() {
         const sub1 = res?.data?.deep_link_sub1;
         Alert.alert(
           'Deep Link (OneLink)',
-          `deep_link_value: ${dlv || 'N/A'}\nsub1: ${sub1 || 'N/A'}`,
+          `deep_link_value: ${dlv || 'N/A'}\nsub1: ${sub1 || 'N/A'}\n\nRAW: ${JSON.stringify(res.data, null, 2)}`,
         );
       }
     });

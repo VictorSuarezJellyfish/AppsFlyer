@@ -41,13 +41,13 @@ class AppDelegate: RCTAppDelegate {
     return super.application(app, open: url, options: options)
   }
 
-  // Universal Links deep linking (https://victorsuareztest.onelink.me/...)
+  // Universal Links deep linking (https://victortest2.onelink.me/...)
   override func application(
     _ application: UIApplication,
     continue userActivity: NSUserActivity,
     restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void
   ) -> Bool {
     AppsFlyerLib.shared().continue(userActivity, restorationHandler: nil)
-    return super.application(application, continue: userActivity, restorationHandler: restorationHandler)
+    return true
   }
 }
